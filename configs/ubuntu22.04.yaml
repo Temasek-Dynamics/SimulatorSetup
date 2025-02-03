@@ -1,17 +1,32 @@
 # configs/ubuntu22.04.yaml
 system_packages:
+<<<<<<< HEAD
+  - yp
+  - curl
+  - git
+
+github_repos:
+=======
   - curl
   - git
 
 # github_repos:
+>>>>>>> 25f6bf0a74340c67a040e6908faf3b1ea839f1f9
 #   - name: px4
 #     url: https://github.com/PX4/PX4-Autopilot.git
 #     branch: main
 #     path: submodules/px4
+<<<<<<< HEAD
+  - name: pegasus
+    url: https://github.com/Temasek-Dynamics/PegasusSimulator.git
+    branch: main
+    path: submodules/PegasusSimulator
+=======
 #   - name: pegasus
 #     url: https://github.com/your-org/PegasusSimulator.git
 #     branch: dev
 #     path: submodules/pegasus
+>>>>>>> 25f6bf0a74340c67a040e6908faf3b1ea839f1f9
 #   - name: isaac_sim
 #     url: https://github.com/NVIDIA-Omniverse/IsaacSim.git
 #     branch: latest
