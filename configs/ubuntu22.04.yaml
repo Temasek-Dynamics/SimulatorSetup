@@ -3,19 +3,11 @@ system_packages:
   - curl
   - git
 
-# github_repos:
-#   - name: px4
-#     url: https://github.com/PX4/PX4-Autopilot.git
-#     branch: main
-#     path: submodules/px4
-#   - name: pegasus
-#     url: https://github.com/your-org/PegasusSimulator.git
-#     branch: dev
-#     path: submodules/pegasus
-#   - name: isaac_sim
-#     url: https://github.com/NVIDIA-Omniverse/IsaacSim.git
-#     branch: latest
-#     path: submodules/isaac_sim
+github_repos:
+  - name: PX4-Autopilot
+    url: https://github.com/Temasek-Dynamics/PX4-Autopilot.git
+    branch: v1.13.0_raynor
+    path: submodules/PX4-Autopilot
 
 python_packages:
   - torch
