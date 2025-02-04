@@ -4,6 +4,11 @@ set -e
 # Set the ROS 2 version
 ROS2_VERSION="humble"
 
+# Echo starting message
+echo -e "\e[1;32m=============================================\e[0m"
+echo -e "\e[1;32m✅ [INFO] Installing ROS 2 $ROS2_VERSION...\e[0m"
+echo -e "\e[1;32m=============================================\e[0m"
+
 # Set the locale for UTF-8
 sudo apt update && sudo apt install locales
 sudo locale-gen en_US en_US.UTF-8
@@ -35,3 +40,8 @@ if ! grep -Fxq "$SOURCE_LINE" "$CONFIG_FILE"; then
     echo "$SOURCE_LINE" >> "$CONFIG_FILE"
     eval "$SOURCE_LINE" # Source the line in the current shell
 fi
+
+# Echo ending message
+echo -e "\e[1;32m=============================================\e[0m"
+echo -e "\e[1;32m🎉 [INFO] ROS 2 $ROS2_VERSION Installed Successfully! 🚀\e[0m"
+echo -e "\e[1;32m=============================================\e[0m"
