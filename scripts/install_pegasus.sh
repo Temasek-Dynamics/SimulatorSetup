@@ -2,29 +2,49 @@
 
 set -e
 SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
-CONFIG_FILE="$(realpath configs/ubuntu22.04.yaml)"
+
+# Avoid hard-code
+if [ -z "$CONFIG_FILE" ]; then
+  echo "Error: CONFIG_FILE is not provided. Please run setup.sh to set CONFIG_FILE."
+  exit 1
+fi
+CONFIG_FILE=$(realpath "$CONFIG_FILE")
 echo "CONFIG_FILE is set to: $CONFIG_FILE"
+
 
 # Export the Isaac sim path to system PATH (default path installed using omniverse GUI)
 # Define the environment variables
 ISAACSIM_PATH="${HOME}/.local/share/ov/pkg/isaac-sim-4.2.0"
 
+DEFAULT_SHELL=$(basename "$SHELL")
+SHELL_FILE="$HOME/.${DEFAULT_SHELL}rc"
+echo "Using shell config file: $SHELL_FILE"
 
 # Append to the user's bash config
-echo "export ISAACSIM_PATH=\"$ISAACSIM_PATH\"" >> ~/.bashrc
-echo "alias ISAACSIM_PYTHON=\"\$ISAACSIM_PATH/python.sh\"" >> ~/.bashrc
-echo "alias ISAACSIM=\"\$ISAACSIM_PATH/isaac-sim.sh\"" >> ~/.bashrc
+if ! grep -Fq "export ISAACSIM_PATH=" "$SHELL_FILE"; then
+  echo "export ISAACSIM_PATH=\"$ISAACSIM_PATH\"" >> "$SHELL_FILE"
+  echo "Added export ISAACSIM_PATH to $SHELL_FILE"
+else
+  echo "export ISAACSIM_PATH already exists in $SHELL_FILE"
+fi
 
+if ! grep -Fq "alias ISAACSIM_PYTHON=" "$SHELL_FILE"; then
+  echo "alias ISAACSIM_PYTHON=\"\$ISAACSIM_PATH/python.sh\"" >> "$SHELL_FILE"
+  echo "Added alias ISAACSIM_PYTHON to $SHELL_FILE"
+else
+  echo "alias ISAACSIM_PYTHON already exists in $SHELL_FILE"
+fi
 
-# Append to the user's zsh config
-echo "export ISAACSIM_PATH=\"$ISAACSIM_PATH\"" >> ~/.zshrc
-echo "alias ISAACSIM_PYTHON=\"\$ISAACSIM_PATH/python.sh\"" >> ~/.zshrc
-echo "alias ISAACSIM=\"\$ISAACSIM_PATH/isaac-sim.sh\"" >> ~/.zshrc
+if ! grep -Fq "alias ISAACSIM=" "$SHELL_FILE"; then
+  echo "alias ISAACSIM=\"\$ISAACSIM_PATH/isaac-sim.sh\"" >> "$SHELL_FILE"
+  echo "Added alias ISAACSIM to $SHELL_FILE"
+else
+  echo "alias ISAACSIM already exists in $SHELL_FILE"
+fi
 
 
 # Source env to make the new variables work
-source ~/.bashrc
-source ~/.zshrc
+source $SHELL_FILE
 
 
 # Install PegasusSimulator
