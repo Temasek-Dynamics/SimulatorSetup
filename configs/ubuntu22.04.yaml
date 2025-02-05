@@ -1,6 +1,5 @@
 # configs/ubuntu22.04.yaml
 system_packages:
-  - yp
   - curl
   - git
 
@@ -9,6 +8,10 @@ github_repos:
     url: "https://github.com/Temasek-Dynamics/PegasusSimulator.git"
     branch: main
     path: "submodules/PegasusSimulator"
+  - name: PX4-Autopilot
+    url: https://github.com/Temasek-Dynamics/PX4-Autopilot.git
+    branch: v1.13.0_raynor
+    path: submodules/PX4-Autopilot
 
 python_packages:
   - torch
