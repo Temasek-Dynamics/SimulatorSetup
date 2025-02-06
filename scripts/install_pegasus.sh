@@ -2,8 +2,6 @@
 
 set -e
 
-SCRIPT_DIR=$(dirname "${BASH_SOURCE[0]}")
-
 echo -e "\e[1;32m=============================================\e[0m"
 echo -e "\e[1;32m✅ [INFO] Setting up Isaac Sim Environment...\e[0m"
 echo -e "\e[1;32m=============================================\e[0m"
@@ -48,11 +46,10 @@ else
   echo "alias ISAACSIM already exists in $SHELL_FILE"
 fi
 
-
 # Install PegasusSimulator
 PEGASUS_URL=$(yq e '.github_repos[] | select(.name == "pegasus") | .url' "$CONFIG_FILE")
 PEGASUS_BRANCH=$(yq e '.github_repos[] | select(.name == "pegasus") | .branch' "$CONFIG_FILE")
-PEGASUS_PATH=$(yq e '.github_repos[] | select(.name == "pegasus") | .path' "$CONFIG_FILE")
+PEGASUS_PATH=$SETUP_DIR/$(yq e '.github_repos[] | select(.name == "pegasus") | .path' "$CONFIG_FILE")
 PEGASUS_EXTENSION_PATH="$PEGASUS_PATH/extensions"
 
 if [ ! -d "$PEGASUS_PATH/.git" ]; then

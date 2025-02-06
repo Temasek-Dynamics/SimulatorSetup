@@ -2,12 +2,7 @@
 set -e
 
 # Configuration file name
-FILE_NAME="ubuntu22.04.yaml"
 MODULE_NAME="PX4-Autopilot"
-
-# Set configuration file path
-SCRIPT_DIR=$(dirname "$0")
-CONFIG_FILE=$(realpath $SCRIPT_DIR/../configs/$FILE_NAME)
 
 # Echo starting message
 echo -e "\e[1;32m=============================================\e[0m"
@@ -23,7 +18,7 @@ fi
 # Get PX4 repository URL and branch
 URL=$(yq e ".github_repos[] | select(.name == \"$MODULE_NAME\") | .url" $CONFIG_FILE)
 BRANCH=$(yq e ".github_repos[] | select(.name == \"$MODULE_NAME\") | .branch" $CONFIG_FILE)
-MODULE_DIR=$(yq e ".github_repos[] | select(.name == \"$MODULE_NAME\") | .path" $CONFIG_FILE)
+MODULE_DIR=$SETUP_DIR/$(yq e ".github_repos[] | select(.name == \"$MODULE_NAME\") | .path" $CONFIG_FILE)
 echo -e "\e[1;32m🔗 [INFO] URL: $URL\e[0m"
 echo -e "\e[1;32m🌿 [INFO] Branch: $BRANCH\e[0m"
 echo -e "\e[1;32m📂 [INFO] Path: $MODULE_DIR\e[0m"
@@ -46,7 +41,7 @@ echo -e "\e[1;32m=============================================\e[0m"
 echo -e "\e[1;32m✅ [INFO] Installing QGroundControl...\e[0m"
 echo -e "\e[1;32m=============================================\e[0m"
 QGC_NAME="QGroundControl-x86_64.AppImage"
-QGC_DIR="$SCRIPT_DIR/../submodules/QGroundControl"
+QGC_DIR="$SETUP_DIR/submodules/QGroundControl"
 
 # Skip download if QGroundControl already exists
 if [ -f "$QGC_DIR/$QGC_NAME" ]; then
