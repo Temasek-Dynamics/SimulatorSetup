@@ -20,6 +20,9 @@ fi
 # Run the installation scripts
 bash scripts/install_common.sh
 bash scripts/install_ros2.sh
+export CONFIG_FILE=$(realpath "$CONFIG_FILE")
+bash scripts/install_isaacsim.sh
+bash scripts/install_pegasus.sh
 bash scripts/install_px4.sh
 
 # Echo ending message
