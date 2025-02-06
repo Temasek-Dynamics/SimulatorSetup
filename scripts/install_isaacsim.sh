@@ -2,7 +2,11 @@
 
 set -e
 
+<<<<<<< HEAD
 ISAACSIM_PATH="${HOME}/.local/share/ov/pkg/isaac-sim-4.2.0/"
+=======
+ISAACSIM_PATH="${HOME}/.local/share/ov/pkg/isaac-sim-4.2.0"
+>>>>>>> main
 mkdir -p "$ISAACSIM_PATH"
 ISAACSIM="$ISAACSIM_PATH/isaac-sim.sh"
 URL="https://download.isaacsim.omniverse.nvidia.com/isaac-sim-standalone%404.2.0-rc.18%2Brelease.16044.3b2ed111.gl.linux-x86_64.release.zip"
