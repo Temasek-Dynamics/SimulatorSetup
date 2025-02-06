@@ -9,6 +9,11 @@ github_repos:
     branch: v1.13.0_raynor
     path: submodules/PX4-Autopilot
 
+# example for python
+python_version: "3.10"
+
 python_packages:
-  - torch
-  - numpy
+  - name: numpy
+    version: "1.23.0"
+  - name: pandas
+    version: "1.5.3"
