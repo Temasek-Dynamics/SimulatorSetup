@@ -2,6 +2,7 @@
 system_packages:
   - curl
   - git
+  - tmux
 
 github_repos:
   - name: pegasus

@@ -48,6 +48,7 @@ if [ -f "$QGC_DIR/$QGC_NAME" ]; then
     echo -e "\e[1;33m⚠️ [WARNING] $QGC_NAME already exists! Skipping download...\e[0m"
 else
     wget https://d176tv9ibo4jno.cloudfront.net/builds/master/$QGC_NAME -P $QGC_DIR
+    chmod +x $QGC_DIR/$QGC_NAME
 fi
 
 # Echo ending message

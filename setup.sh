@@ -1,6 +1,12 @@
 #!/bin/bash
 set -e
 
+# Parse arguments
+RUN_DEMO=true
+if [[ "$1" == "--no-demo" ]]; then
+    RUN_DEMO=false
+fi
+
 # Echo starting message
 echo -e "\e[1;32m=============================================\e[0m"
 echo -e "\e[1;32m🛠️ [INFO] Setting up simulation environment...\e[0m"
@@ -18,12 +24,17 @@ else
     echo -e "\e[1;32m✅ [INFO] Using config: $CONFIG_FILE\e[0m"
 fi
 
-# Run the installation scripts
+Run the installation scripts
 bash $SCRIPT_DIR/install_common.sh
 bash $SCRIPT_DIR/install_ros2.sh
 bash $SCRIPT_DIR/install_isaacsim.sh
 bash $SCRIPT_DIR/install_pegasus.sh
 bash $SCRIPT_DIR/install_px4.sh
+
+# Run the demo script
+if [ "$RUN_DEMO" = true ]; then
+    bash $SCRIPT_DIR/demo.sh
+fi
 
 # Echo ending message
 echo -e "\e[1;32m=============================================\e[0m"
