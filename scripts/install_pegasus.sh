@@ -49,10 +49,6 @@ else
 fi
 
 
-source "$SHELL_FILE"
-echo -e "\e[1;32m✅ [INFO] Environment variables updated and sourced successfully.\e[0m"
-
-
 # Install PegasusSimulator
 PEGASUS_URL=$(yq e '.github_repos[] | select(.name == "pegasus") | .url' "$CONFIG_FILE")
 PEGASUS_BRANCH=$(yq e '.github_repos[] | select(.name == "pegasus") | .branch' "$CONFIG_FILE")
