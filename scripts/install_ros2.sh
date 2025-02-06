@@ -30,14 +30,14 @@ sudo apt install ros-humble-desktop ros-dev-tools -y
 
 # Detect the default shell and add sourcing to the appropriate configuration file
 DEFAULT_SHELL=$(basename "$SHELL")
-CONFIG_FILE="$HOME/.${DEFAULT_SHELL}rc"
+RC_FILE="$HOME/.${DEFAULT_SHELL}rc"
 SOURCE_LINE="source /opt/ros/$ROS2_VERSION/setup.${DEFAULT_SHELL}"
 
 # Check if the lines already exist before adding them
-if ! grep -Fxq "$SOURCE_LINE" "$CONFIG_FILE"; then
-    echo "" >> "$CONFIG_FILE" # Add a newline before appending the source line
-    echo "# Source ROS 2" >> "$CONFIG_FILE" # Add a comment before appending the source line
-    echo "$SOURCE_LINE" >> "$CONFIG_FILE"
+if ! grep -Fxq "$SOURCE_LINE" "$RC_FILE"; then
+    echo "" >> "$RC_FILE" # Add a newline before appending the source line
+    echo "# Source ROS 2" >> "$RC_FILE" # Add a comment before appending the source line
+    echo "$SOURCE_LINE" >> "$RC_FILE"
     eval "$SOURCE_LINE" # Source the line in the current shell
 fi
 
