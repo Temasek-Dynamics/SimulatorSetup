@@ -47,7 +47,7 @@ QGC_DIR="$SETUP_DIR/submodules/QGroundControl"
 if [ -f "$QGC_DIR/$QGC_NAME" ]; then
     echo -e "\e[1;33m⚠️ [WARNING] $QGC_NAME already exists! Skipping download...\e[0m"
 else
-    wget https://d176tv9ibo4jno.cloudfront.net/builds/master/$QGC_NAME -P $QGC_DIR
+    wget https://github.com/mavlink/qgroundcontrol/releases/download/v3.5.6/QGroundControl.AppImage -P $QGC_DIR
 fi
 
 # Echo ending message
