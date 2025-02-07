@@ -66,6 +66,13 @@ echo -e "\e[1;34m🔧 [INFO] Installing Pegasus Simulator Python package...\e[0m
 "$ISAACSIM_PATH/python.sh" -m pip install --editable "$PEGASUS_EXTENSION_PATH/pegasus.simulator"
 echo -e "\e[1;32m✅ [INFO] Pegasus Simulator installed successfully.\e[0m"
 
+echo -e "\e[1;34m🔧 [INFO] Setting PX4 path...\e[0m"
+PEGASUS_CONFIG="$PEGASUS_PATH/extensions/pegasus.simulator/config/configs.yaml"
+PX4_RELATIVE_DIR=$(yq e '.github_repos[] | select(.name == "PX4-Autopilot") | .path' "$CONFIG_FILE")
+PX4_DIR=$(realpath "$SETUP_DIR/$PX4_RELATIVE_DIR")
+yq eval ".px4_dir = \"$PX4_DIR\"" -i "$PEGASUS_CONFIG"
+echo -e "\e[1;32m✅ [INFO] PX4 path set successfully.\e[0m"
+
 echo -e "\e[1;32m=============================================\e[0m"
 echo -e "\e[1;32m🎉 [INFO] Pegasus Simulator Setup Completed! 🚀\e[0m"
 echo -e "\e[1;32m=============================================\e[0m"
