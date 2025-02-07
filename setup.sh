@@ -24,12 +24,12 @@ else
     echo -e "\e[1;32m✅ [INFO] Using config: $CONFIG_FILE\e[0m"
 fi
 
-Run the installation scripts
+# Run the installation scripts
 bash $SCRIPT_DIR/install_common.sh
 bash $SCRIPT_DIR/install_ros2.sh
 bash $SCRIPT_DIR/install_isaacsim.sh
-bash $SCRIPT_DIR/install_pegasus.sh
 bash $SCRIPT_DIR/install_px4.sh
+bash $SCRIPT_DIR/install_pegasus.sh
 
 # Run the demo script
 if [ "$RUN_DEMO" = true ]; then
