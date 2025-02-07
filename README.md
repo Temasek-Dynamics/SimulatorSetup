@@ -8,6 +8,12 @@ Scripts for fast installation.
 bash ./setup.sh
 ```
 
+If you don't want to run the default demo, you can add argument `--no-demo`:
+
+```bash
+bash ./setup.sh --no-demo
+```
+
 ## How to develop
 
 There is a [`template.sh`](./scripts/template.sh) for you to develop your own script.
