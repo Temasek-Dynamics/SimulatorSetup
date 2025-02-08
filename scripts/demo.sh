@@ -7,8 +7,8 @@ echo -e "\e[1;32m🛠️ [INFO] Starting a take-off demo...\e[0m"
 echo -e "\e[1;32m=============================================\e[0m"
 
 # Commands
-PEGASUS_CMD="ISAACSIM_PYTHON $SETUP_DIR/submodules/PegasusSimulator/examples/1_px4_single_vehicle.py"
-QGC_CMD="$SETUP_DIR/submodules/QGroundControl/QGroundControl-x86_64.AppImage"
+PEGASUS_CMD="ISAACSIM_PYTHON $SETUP_DIR/submodules/PegasusSimulator/examples/1_px4_single_raynor.py"
+QGC_CMD="$SETUP_DIR/submodules/QGroundControl/QGroundControl.AppImage"
 
 # Install tmux
 sudo apt update
