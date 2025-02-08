@@ -13,7 +13,5 @@ github_repos:
 python_version: "3.10"
 
 python_packages:
-  - name: numpy
-    version: "1.23.0"
-  - name: pandas
-    version: "1.5.3"
+  - name: numpy==1.23.0
+  - name: pandas==1.5.3
