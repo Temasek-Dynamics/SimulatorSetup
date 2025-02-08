@@ -97,7 +97,7 @@ PYTHON_PACKAGES_INSTALLED=0
 PYTHON_PACKAGES_SKIPPED=0
 
 # Ensure yq executes successfully and fetch package list
-PYTHON_PACKAGES=$(yq e '.python_packages[].name' "$CONFIG_FILE" 2>/dev/null) || {
+PYTHON_PACKAGES=$(yq e '.python_packages[]' "$CONFIG_FILE" 2>/dev/null) || {
     echo -e "\e[1;31m❌ [ERROR] Failed to parse 'python_packages' from YAML file!\e[0m"
     exit 1
 }
