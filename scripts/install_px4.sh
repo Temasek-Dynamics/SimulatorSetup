@@ -40,14 +40,16 @@ make -C $MODULE_DIR DONT_RUN=1 px4_sitl_default none
 echo -e "\e[1;32m=============================================\e[0m"
 echo -e "\e[1;32m✅ [INFO] Installing QGroundControl...\e[0m"
 echo -e "\e[1;32m=============================================\e[0m"
-QGC_NAME="QGroundControl-x86_64.AppImage"
+QGC_NAME="QGroundControl.AppImage"
 QGC_DIR="$SETUP_DIR/submodules/QGroundControl"
+QGC_VERSION=$(yq e ".github_repos[] | select(.name == \"$MODULE_NAME\") | .QGC_VERSION" $CONFIG_FILE)
+QGC_URL="https://github.com/mavlink/qgroundcontrol/releases/download/$QGC_VERSION/$QGC_NAME"
 
 # Skip download if QGroundControl already exists
 if [ -f "$QGC_DIR/$QGC_NAME" ]; then
     echo -e "\e[1;33m⚠️ [WARNING] $QGC_NAME already exists! Skipping download...\e[0m"
 else
-    wget https://d176tv9ibo4jno.cloudfront.net/builds/master/$QGC_NAME -P $QGC_DIR
+    wget $QGC_URL -P $QGC_DIR
     chmod +x $QGC_DIR/$QGC_NAME
 fi
 

@@ -13,7 +13,11 @@ github_repos:
     url: https://github.com/Temasek-Dynamics/PX4-Autopilot.git
     branch: v1.13.0_raynor
     path: submodules/PX4-Autopilot
+    QGC_VERSION: v4.4.3
+
+# example for python
+python_version: "3.10"
 
 python_packages:
-  - torch
-  - numpy
+  - numpy==1.23.0
+  - pandas==1.5.3
