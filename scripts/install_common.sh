@@ -50,14 +50,16 @@ if [ -z "$SYSTEM_PACKAGES" ]; then
 fi
 
 # install system_packages
-echo "$SYSTEM_PACKAGES" | while read package; do
+while read package; do
     if dpkg -l | grep -q "^ii  $package "; then
         echo -e "\e[1;34m📦 [INFO] System package '$package' is already installed. Skipping...\e[0m"
+        SYSTEM_PACKAGES_SKIPPED=$(expr $SYSTEM_PACKAGES_SKIPPED + 1)
     else
         echo -e "\e[1;33m🔹 [INFO] Installing system package '$package'...\e[0m"
         sudo apt install -y "$package"
+        SYSTEM_PACKAGES_INSTALLED=$(expr $SYSTEM_PACKAGES_INSTALLED + 1)
     fi
-done
+done < <(echo "$SYSTEM_PACKAGES")
 
 echo -e "\e[1;32m✅ [INFO] System Packages Installed: $SYSTEM_PACKAGES_INSTALLED, Skipped: $SYSTEM_PACKAGES_SKIPPED\e[0m"
 
