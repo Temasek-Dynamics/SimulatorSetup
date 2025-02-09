@@ -19,6 +19,6 @@ SESSION_NAME="demo"
 tmux kill-session -t $SESSION_NAME 2>/dev/null || true
 tmux new-session -d -s $SESSION_NAME
 tmux split-window -h
-tmux send-keys -t $SESSION_NAME:0.0 "$PEGASUS_CMD" C-m
-tmux send-keys -t $SESSION_NAME:0.1 "$QGC_CMD" C-m
+tmux send-keys -t $SESSION_NAME:0.0 "$QGC_CMD" C-m
+tmux send-keys -t $SESSION_NAME:0.1 "$PEGASUS_CMD" C-m
 tmux attach -t $SESSION_NAME
