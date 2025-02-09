@@ -14,7 +14,7 @@ echo -e "\e[1;32m=============================================\e[0m"
 
 # Set configuration file
 FILE_NAME="ubuntu22.04.yaml"
-export SETUP_DIR=$(dirname "$0")
+export SETUP_DIR=$(realpath "$(dirname "$0")")
 export SCRIPT_DIR=$(realpath $SETUP_DIR/scripts)
 export CONFIG_FILE=$(realpath $SETUP_DIR/configs/$FILE_NAME)
 if [ ! -f "$CONFIG_FILE" ]; then
