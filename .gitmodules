@@ -1,0 +1,2 @@
+[submodule "./submodules/PegasusSimulator/"]
+	url = git@github.com:CarlsonGYC/PegasusSimulator.git
